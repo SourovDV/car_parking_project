@@ -1,5 +1,5 @@
-import 'package:car_parking_project/screens/homePage.dart';
-import 'package:car_parking_project/screens/splash_screen.dart';
+import 'package:car_parking_project/screens/OnBording%20Screen/homePage.dart';
+import 'package:car_parking_project/screens/OnBording%20Screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

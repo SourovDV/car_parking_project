@@ -1,7 +1,10 @@
-import 'package:car_parking_project/screens/parking_update.dart';
+import 'package:car_parking_project/screens/OnBording%20Screen/reserve_park.dart';
 import 'package:flutter/material.dart';
-class ReservePark extends StatelessWidget {
-  const ReservePark({super.key});
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +20,46 @@ class ReservePark extends StatelessWidget {
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
-                  Center(child: Image.asset("Assert/second_picture.png")),
-                  const SizedBox(
+                Center(child: Image.asset("Assert/profile.png")),
+                  SizedBox(
                     height: 40,
                   ),
-                  const Text(
-                    "Find, Reserve, Park!",
+                  Text(
+                    "Why Choose Us",
                     style: TextStyle(
                       fontSize: 25,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "With VIP ME, parking has never been easier. Whether you're driving a car or a truck, quickly discover secure, available parking spots nearby, reserve them in real-time, and park with peace of mind. Save time, reduce stress, and never worry about finding parking again!",
+                      "We make parking easy, secure, and stress-free. Whether you're driving a car or a truck, find and reserve reliable parking spots in real-time, wherever you are. With our simple booking and payment system, your parking experience is just a tap away!",
                       style: TextStyle(color: Colors.white,fontSize: 15,letterSpacing: 0.8),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 350,),
+              SizedBox(height: 150,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(Icons.abc_rounded,color: Colors.red,size: 30,),
+                  Icon(Icons.abc_rounded,color: Colors.red,size: 30,),
         
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal      : 8),
                     child: InkWell(
-                      onTap: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=>ParkingUpdate())),
+                      onTap: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=>ReservePark())),
                       child: Container(
                         height: 40,
                         width: 100,
@@ -73,6 +77,7 @@ class ReservePark extends StatelessWidget {
           ),
         ),
       ),
+
     );
   }
 }

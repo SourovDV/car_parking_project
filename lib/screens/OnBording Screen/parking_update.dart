@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -74,10 +75,13 @@ class ParkingUpdate extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5), // 👈 এখানে radius দেওয়া হয়েছে
                           ),
                         height: 35,
-                        child: Center(
-                          child: Text(
-                            "Get Started",
-                            style: TextStyle(color: Colors.white),
+                        child: InkWell(
+                          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen())),
+                          child: Center(
+                            child: Text(
+                              "Get Started",
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
