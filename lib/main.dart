@@ -1,4 +1,5 @@
-import 'package:car_parking_project/homePage.dart';
+import 'package:car_parking_project/screens/homePage.dart';
+import 'package:car_parking_project/screens/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
