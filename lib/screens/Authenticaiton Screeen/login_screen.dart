@@ -1,3 +1,5 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/forget_password.dart';
+import 'package:car_parking_project/screens/OnBording%20Screen/homePage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -60,13 +62,17 @@ class LoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.red,
                         ),
-                        child: Center(
-                          child: Text(
-                            "Sign In ",
-                            style: TextStyle(color: Colors.white),
+
+                          child: InkWell(
+                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword())),
+                            child: Center(
+                              child: Text(
+                                "Sign Ins ",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
                       SizedBox(height: 10),
                       Align(
                         alignment: Alignment.bottomRight,

@@ -1,0 +1,76 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/forget_otp.dart';
+import 'package:flutter/material.dart';
+
+class ForgetPassword extends StatelessWidget {
+  const ForgetPassword({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xff0E2148),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(height: 10),
+              Form(
+                child: Column(
+                  children: [
+                    Image.asset("Assert/forget.png"),
+                    SizedBox(height: 10,),
+                    Text("Forget Password",style: TextStyle(color: Colors.white, fontSize: 24,fontWeight: FontWeight.w600),),
+                    SizedBox(height: 5,),
+                    Text("Enter your email to reset your password",style: TextStyle(color:Colors.white,fontSize: 14,fontWeight: FontWeight.w400,),),
+                    SizedBox(height: 10,),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email,color: Colors.white,),
+                        hint: Text("sourovchandra@gmail.com",style: TextStyle(color: Colors.white),),
+                        suffixIcon: Icon(Icons.check_box,color: Colors.grey,),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Colors.grey,
+                            width: 2,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 2),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+
+                    SizedBox(height: 10),
+
+                    SizedBox(height: 10),
+
+                  ],
+                ),
+              ),
+
+              Container(
+                height: 45,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.red,
+                ),
+                child: Center(
+                  child: InkWell(
+                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetOtp())),
+                    child: Text(
+                      "Get OTP",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
