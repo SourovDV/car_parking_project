@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/packing_spots.dart';
 import 'package:flutter/material.dart';
 
 class Verify extends StatelessWidget {
@@ -63,7 +64,7 @@ class Verify extends StatelessWidget {
               ),
 
               InkWell(
-                // onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>ResertPassword())),
+                onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>PackingSpots())),
                 child: Container(
                   height: 45,
                   width: double.infinity,
