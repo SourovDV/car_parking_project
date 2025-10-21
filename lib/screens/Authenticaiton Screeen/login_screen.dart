@@ -8,6 +8,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade700,
+      ),
       backgroundColor: Colors.indigo.shade700,
       body: Center(
         child: Padding(
@@ -67,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                             onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword())),
                             child: Center(
                               child: Text(
-                                "Sign Ins ",
+                                "Sign In ",
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),

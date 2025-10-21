@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/resert_password.dart';
 import 'package:flutter/material.dart';
 
 class ForgetOtp extends StatelessWidget {
@@ -6,7 +7,10 @@ class ForgetOtp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0E2148),
+      backgroundColor: Colors.indigo.shade700,
+      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade700,
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -59,16 +63,16 @@ class ForgetOtp extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                height: 45,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.red,
-                ),
-                child: Center(
-                  child: InkWell(
-                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetOtp())),
+              InkWell(
+                 onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>ResertPassword())),
+                child: Container(
+                  height: 45,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.red,
+                  ),
+                  child: Center(
                     child: Text(
                       "Verify",
                       style: TextStyle(color: Colors.white),
