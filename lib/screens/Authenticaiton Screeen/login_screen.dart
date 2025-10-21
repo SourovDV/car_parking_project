@@ -1,4 +1,5 @@
 import 'package:car_parking_project/screens/Authenticaiton%20Screeen/forget_password.dart';
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/sign_up.dart';
 import 'package:car_parking_project/screens/OnBording%20Screen/homePage.dart';
 import 'package:flutter/material.dart';
 
@@ -89,7 +90,9 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don't have accound ? ",style: TextStyle(color: Colors.white),),
-                Text("Sign Up",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)
+                InkWell(
+                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp())),
+                    child: Text("Sign Up",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),))
               ],
             )
             ],

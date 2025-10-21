@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Authenticaiton%20Screeen/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class ResertPassword extends StatelessWidget {
@@ -67,7 +68,7 @@ class ResertPassword extends StatelessWidget {
               ),
 
               InkWell(
-                onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>ResertPassword())),
+                onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp())),
                 child: Container(
                   height: 45,
                   width: double.infinity,
