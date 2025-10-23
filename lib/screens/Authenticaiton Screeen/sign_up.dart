@@ -7,6 +7,19 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
+    // === Validation patterns ===
+    final RegExp emailRegexp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+
+    final RegExp passRegExp = RegExp(r'(?=.*[a-z])(?=.*[0-9])');
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo.shade700,
@@ -20,11 +33,13 @@ class SignUp extends StatelessWidget {
             children: [
               SizedBox(height: 10),
               Form(
+                key: _formKey,
                 child: Column(
                   children: [
                     Image.asset("Assert/splash_screen.png"),
                     SizedBox(height: 10,),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
 
                         hint: Text("User Name",style: TextStyle(color: Colors.white),),
@@ -41,6 +56,15 @@ class SignUp extends StatelessWidget {
                     ),
                     SizedBox(height: 10,),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Email is required";
+                        } else if (!emailRegexp.hasMatch(value)) {
+                          return "Enter a valid email address";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email,color: Colors.white,),
                         hint: Text("sourovchandra@gmail.com",style: TextStyle(color: Colors.white),),
@@ -58,6 +82,18 @@ class SignUp extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      controller: passwordController,
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Password is required";
+                        } else if (value.length < 8) {
+                          return "Password must be at least 8 characters";
+                        } else if (!passRegExp.hasMatch(value)) {
+                          return "Password must contain both letters and numbers";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
 
                         hint: Text("password",style: TextStyle(color: Colors.white),),
@@ -75,6 +111,15 @@ class SignUp extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Please confirm your password";
+                        } else if (value != passwordController.text) {
+                          return "Passwords do not match";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
 
                         hint: Text("Confirm Password",style: TextStyle(color: Colors.white),),
@@ -100,7 +145,15 @@ class SignUp extends StatelessWidget {
                       ),
 
                       child: InkWell(
-                        onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Verify())),
+                        onTap: (){
+                          if (_formKey.currentState!.validate()) {
+                            // সব কিছু valid হলে এখানে আসবে
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(const SnackBar(content: Text("✅ All fields are valid!")));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Verify()));
+                          }
+                        },
                         child: Center(
                           child: Text(
                             "Sign Up ",

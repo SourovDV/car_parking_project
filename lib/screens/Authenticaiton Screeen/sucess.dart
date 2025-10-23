@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/homepage.dart';
 import 'package:flutter/material.dart';
 
 class Sucess extends StatelessWidget {
@@ -34,7 +35,7 @@ class Sucess extends StatelessWidget {
               ),
 
               InkWell(
-                // onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp())),
+                // onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>AuthValidationExample())),
                 child: Container(
                   height: 45,
                   width: double.infinity,

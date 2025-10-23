@@ -6,6 +6,13 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final form_key = GlobalKey<FormState>();
+    // === Validation patterns ===
+    final RegExp emailRegexp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+
     return Scaffold(
       backgroundColor: Colors.indigo.shade700,
       appBar: AppBar(
@@ -20,6 +27,7 @@ class ForgetPassword extends StatelessWidget {
             children: [
               SizedBox(height: 10),
               Form(
+                key: form_key,
                 child: Column(
                   children: [
                     Image.asset("Assert/forget.png"),
@@ -29,6 +37,15 @@ class ForgetPassword extends StatelessWidget {
                     Text("Enter your email to reset your password",style: TextStyle(color:Colors.white,fontSize: 14,fontWeight: FontWeight.w400,),),
                     SizedBox(height: 10,),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Email is required";
+                        } else if (!emailRegexp.hasMatch(value)) {
+                          return "Enter a valid email address";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email,color: Colors.white,),
                         hint: Text("sourovchandra@gmail.com",style: TextStyle(color: Colors.white),),
@@ -55,7 +72,15 @@ class ForgetPassword extends StatelessWidget {
               ),
 
               InkWell(
-                onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetOtp())),
+                onTap: (){
+                  if (form_key.currentState!.validate()) {
+                    // সব কিছু valid হলে এখানে আসবে
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(const SnackBar(content: Text("✅ All fields are valid!")));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetOtp()));
+                  };
+                },
                 child: Container(
                   height: 45,
                   width: double.infinity,
@@ -65,7 +90,7 @@ class ForgetPassword extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "Get OTP",
+                      "Get OTPs",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

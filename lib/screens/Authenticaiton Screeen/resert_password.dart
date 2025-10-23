@@ -6,6 +6,15 @@ class ResertPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final form_key = GlobalKey<FormState>();
+    final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+    final RegExp emailRegexp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+
+    final RegExp passRegExp = RegExp(r'(?=.*[a-z])(?=.*[0-9])');
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo.shade700,
@@ -19,6 +28,7 @@ class ResertPassword extends StatelessWidget {
             children: [
               SizedBox(height: 10),
               Form(
+                key: form_key,
                 child: Column(
                   children: [
                     Image.asset("Assert/resert_password.png"),
@@ -29,6 +39,18 @@ class ResertPassword extends StatelessWidget {
                     SizedBox(height: 15,),
 
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Password is required";
+                        } else if (value.length < 8) {
+                          return "Password must be at least 8 characters";
+                        } else if (!passRegExp.hasMatch(value)) {
+                          return "Password must contain both letters and numbers";
+                        }
+                        return null;
+                      },
+                      controller: passwordController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email,color: Colors.white,),
                         hint: Text("New password",style: TextStyle(color: Colors.white),),
@@ -46,6 +68,15 @@ class ResertPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      validator: (value){
+                        if (value == null || value.isEmpty) {
+                          return "Please confirm your password";
+                        } else if (value != passwordController.text) {
+                          return "Passwords do not match";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email,color: Colors.white,),
                         hint: Text("Confirm Password",style: TextStyle(color: Colors.white),),
@@ -68,7 +99,15 @@ class ResertPassword extends StatelessWidget {
               ),
 
               InkWell(
-                onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp())),
+                onTap: (){
+                  if (form_key.currentState!.validate()) {
+                    // সব কিছু valid হলে এখানে আসবে
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(const SnackBar(content: Text("✅ All fields are valid!")));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp()));
+                  }
+                },
                 child: Container(
                   height: 45,
                   width: double.infinity,
