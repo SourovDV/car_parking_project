@@ -9,13 +9,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final form_key = GlobalKey<FormState>();
-
+    final _formKey = GlobalKey<FormState>();
     // === Validation patterns ===
     final RegExp emailRegexp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
     );
-
     final RegExp passRegExp = RegExp(r'(?=.*[a-z])(?=.*[0-9])');
 
     return Scaffold(
@@ -31,21 +29,21 @@ class LoginScreen extends StatelessWidget {
             children: [
               SizedBox(height: 10),
               Form(
-                key: form_key,
+                  key: _formKey,
                   child: Column(
                     children: [
                       Image.asset("Assert/splash_screen.png"),
                       SizedBox(height: 10,),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
                         validator: (value){
-                          if (value == null || value.isEmpty) {
-                            return "Email is required";
-                          } else if (!emailRegexp.hasMatch(value)) {
-                            return "Enter a valid email address";
-                          }
-                          return null;
+                            if (value == null || value.isEmpty) {
+                              return "Email is required";
+                            } else if (!emailRegexp.hasMatch(value)) {
+                              return "Enter a valid email address";
+                            }
+                            return null;
                         },
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.email,color: Colors.white,),
                            hint: Text("sourovchandra@gmail.com",style: TextStyle(color: Colors.white),),
@@ -68,9 +66,9 @@ class LoginScreen extends StatelessWidget {
                           if (value == null || value.isEmpty) {
                             return "Password is required";
                           } else if (value.length < 8) {
-                            return "Password must be at least 8 characters";
+                          return "Password must be at least 8 characters";
                           } else if (!passRegExp.hasMatch(value)) {
-                            return "Password must contain both letters and numbers";
+                          return "Password must contain both letters and numbers";
                           }
                           return null;
                         },
@@ -100,14 +98,13 @@ class LoginScreen extends StatelessWidget {
 
                           child: InkWell(
                             onTap: (){
-                              if (form_key.currentState!.validate()) {
+                              if (_formKey.currentState!.validate()) {
                                 // সব কিছু valid হলে এখানে আসবে
-                                ScaffoldMessenger.of(
-                                  context,
-                                ).showSnackBar(const SnackBar(content: Text("✅ All fields are valid!")));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text("✅ All fields are valid!")),
+                                );
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
-                              };
-
+                              }
                             },
                             child: Center(
                               child: Text(
