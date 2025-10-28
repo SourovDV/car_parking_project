@@ -35,7 +35,7 @@ class Sucess extends StatelessWidget {
               ),
 
               InkWell(
-                // onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>AuthValidationExample())),
+                onTap: ()=>Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Homepage1())),
                 child: Container(
                   height: 45,
                   width: double.infinity,
