@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/homepage1.dart';
 import 'package:car_parking_project/screens/OnBording%20Screen/homePage.dart';
 import 'package:car_parking_project/screens/OnBording%20Screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Homepage1(),
     );
   }
 }
