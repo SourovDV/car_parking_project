@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/home_page2.dart';
 import 'package:flutter/material.dart';
 
 class Homepage1 extends StatefulWidget {
@@ -144,7 +145,7 @@ class _Homepage1State extends State<Homepage1> {
                 ),
               ],
             ),
-            SizedBox(height: 15,),
+            SizedBox(height: 15),
             Expanded(
               child: ListView.builder(
                 itemCount: 5,
@@ -175,7 +176,7 @@ class _Homepage1State extends State<Homepage1> {
                                 children: [
                                   Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Park Safe Zone ${index + 1}',
@@ -184,62 +185,88 @@ class _Homepage1State extends State<Homepage1> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      const Icon(Icons.favorite_border,
-                                          color: Colors.red),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    children: const [
-                                      Icon(Icons.location_on_outlined,
-                                          size: 16, color: Colors.blueGrey),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        'Las Vegas - 4.6 Km',
-                                        style: TextStyle(
-                                            fontSize: 13, color: Colors.black54),
+                                      const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.red,
                                       ),
                                     ],
                                   ),
                                   const SizedBox(height: 5),
                                   Row(
                                     children: const [
-                                      Icon(Icons.local_parking,
-                                          size: 16, color: Colors.blueGrey),
+                                      Icon(
+                                        Icons.location_on_outlined,
+                                        size: 16,
+                                        color: Colors.blueGrey,
+                                      ),
+                                      SizedBox(width: 4),
+                                      Text(
+                                        'Las Vegas - 4.6 Km',
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.local_parking,
+                                        size: 16,
+                                        color: Colors.blueGrey,
+                                      ),
                                       SizedBox(width: 4),
                                       Text(
                                         'Available Slot: 6/12',
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.black54),
+                                          fontSize: 13,
+                                          color: Colors.black54,
+                                        ),
                                       ),
                                     ],
                                   ),
                                   const SizedBox(height: 8),
                                   Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       const Text(
                                         'Price: \$25/Day',
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                       Container(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 4),
+                                          horizontal: 8,
+                                          vertical: 4,
+                                        ),
                                         decoration: BoxDecoration(
                                           color: Colors.redAccent,
-                                          borderRadius: BorderRadius.circular(6),
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
                                         ),
-                                        child: Row(
-                                          children: const [
-                                            Text('4.4',
+                                        child: InkWell(
+                                          onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>ParkingFilterPage())),
+                                          child: Row(
+                                            children: const [
+                                              Text(
+                                                '4.4',
                                                 style: TextStyle(
-                                                    color: Colors.white)),
-                                            SizedBox(width: 3),
-                                            Icon(Icons.star,
-                                                color: Colors.white, size: 14),
-                                          ],
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              SizedBox(width: 3),
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.white,
+                                                size: 14,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -259,18 +286,18 @@ class _Homepage1State extends State<Homepage1> {
         ),
       ),
 
-
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF1C2B4A),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.amber, // নির্বাচিত আইটেমের color
-        unselectedItemColor: Colors.white70, // অনির্বাচিত আইটেমের color
+        selectedItemColor: Colors.amber, // নির্বাচিত আইটেমের রঙ
+        unselectedItemColor: Colors.white70, // অনির্বাচিত আইটেমের রঙ
         selectedLabelStyle: const TextStyle(
           color: Colors.amber,
           fontWeight: FontWeight.bold,
         ),
         unselectedLabelStyle: const TextStyle(color: Colors.white70),
+        type: BottomNavigationBarType.fixed, // ৪ বা তার বেশি আইটেম থাকলে এটা দরকার
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -278,7 +305,11 @@ class _Homepage1State extends State<Homepage1> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_rounded),
-            label: "My recarvation",
+            label: "My Reservation",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: "Favorites",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -286,6 +317,7 @@ class _Homepage1State extends State<Homepage1> {
           ),
         ],
       ),
+
     );
   }
 }
