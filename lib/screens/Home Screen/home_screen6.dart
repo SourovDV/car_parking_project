@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/home_page7.dart';
 import 'package:flutter/material.dart';
 
 class VehicleBookingInfoPage extends StatelessWidget {
@@ -135,7 +136,9 @@ class VehicleBookingInfoPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>HomePage7()));
+                },
                 child: const Text(
                   "Continue",
                   style: TextStyle(
