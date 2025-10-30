@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/homescreen5.dart';
 import 'package:flutter/material.dart';
 
 class HomePage4 extends StatelessWidget {
@@ -252,7 +253,7 @@ class HomePage4 extends StatelessWidget {
                         children: [
                           const CircleAvatar(
                             radius: 22,
-                            backgroundImage: AssetImage("assets/user.png"),
+
                           ),
                           const SizedBox(width: 10),
                           const Expanded(
@@ -298,7 +299,7 @@ class HomePage4 extends StatelessWidget {
                         children: [
                           const CircleAvatar(
                             radius: 22,
-                            backgroundImage: AssetImage("assets/user.png"),
+
                           ),
                           const SizedBox(width: 10),
                           const Expanded(
@@ -353,12 +354,17 @@ class HomePage4 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30,),
-            Container(
-              height: 50,
-              color: Colors.red,
-              child: Center(
-                child: Text("Continoue",style: TextStyle(color: Colors.white,fontSize: 20),),
-              )
+            InkWell(
+              onTap:(){
+                Navigator.push(context,MaterialPageRoute(builder: (contex)=>Homescreen5()));
+              },
+              child: Container(
+                height: 50,
+                color: Colors.red,
+                child: Center(
+                  child: Text("Continoue",style: TextStyle(color: Colors.white,fontSize: 20),),
+                )
+              ),
             )
           ],
         ),
