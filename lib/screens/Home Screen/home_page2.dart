@@ -1,3 +1,4 @@
+import 'package:car_parking_project/screens/Home%20Screen/home_page3.dart';
 import 'package:flutter/material.dart';
 
 class ParkingFilterPage extends StatefulWidget {
@@ -116,7 +117,7 @@ class _ParkingFilterPageState extends State<ParkingFilterPage> {
                 Expanded(child: _buildBox("\$50")),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 300),
             SizedBox(
               width: double.infinity,
               height: 50,
@@ -127,7 +128,9 @@ class _ParkingFilterPageState extends State<ParkingFilterPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (contex)=>HomePage3()));
+                },
                 child: const Text(
                   "Apply Filters",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
