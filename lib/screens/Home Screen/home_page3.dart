@@ -24,8 +24,8 @@ class HomePage3 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Easy Park Spot ",style: TextStyle(color: Colors.white),),
-                    Text("Las Vegas - 4.6 Km",style: TextStyle(color: Colors.white),),
-                    Text("Available Slot: 6/12",style: TextStyle(color: Colors.white),),
+                    Text("Las Vegasssd - 4.6 Km",style: TextStyle(color: Colors.white),),
+                    Text("Available Slotssd: 6/12",style: TextStyle(color: Colors.white),),
                     SizedBox(height: 10,),
                     Row(
                       children: [
